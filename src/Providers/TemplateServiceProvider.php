@@ -6,12 +6,9 @@ use Plenty\Plugin\ServiceProvider;
 use Plenty\Plugin\Templates\Twig;
 use Plenty\Plugin\Events\Dispatcher;
 use Plenty\Plugin\ConfigRepository;
-use Plenty\Plugin\RouteServiceProvider;
-use Plenty\Plugin\Routing\Router;
 
 use Plenty\Modules\Category\Models\Category;
 use Plenty\Modules\Item\DataLayer\Models\Record;
-use Plenty\Modules\Frontend\Services;
 
 use IO\Helper\TemplateContainer;
 use IO\Helper\CategoryMap;
@@ -24,33 +21,12 @@ class TemplateServiceProvider extends ServiceProvider
 
     }
 
-    public function mobile_path()
-    {   
-        patch('/', '/amp/');
-    }
-	
-    public function mobile_test()
-    {   
-	if (true===getIsMobile()) 
-	{
-	    mobile_path();
-	    return true;
-	}
-	else 
-	{
-	    return false;	
-	}	
-    }
-	
     public function boot(Twig $twig, Dispatcher $eventDispatcher, ConfigRepository $config)
     {
         // Register Twig String Loader to use function: template_from_string
         $twig->addExtension('Twig_Extension_StringLoader');
-
-	    
-	$mobile = new Twig_SimpleFunction(mobile_test());
-
-        $twig->addFunction($mobile);
+	$mobile = false;
+        $twig->addGlobal($mobile);
 					
         // provide template to use for content categories
         $eventDispatcher->listen('tpl.category.content', function(TemplateContainer $container, $templateData) {
