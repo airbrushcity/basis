@@ -25,11 +25,7 @@ class TemplateServiceProvider extends ServiceProvider
     {
         // Register Twig String Loader to use function: template_from_string
         $twig->addExtension('Twig_Extension_StringLoader');
-	    
-	$mobile = false;
-	    
-        $twig->addGlobal($mobile);
-					
+	 					
         // provide template to use for content categories
         $eventDispatcher->listen('tpl.category.content', function(TemplateContainer $container, $templateData) {
             $container->setTemplate("PluginBasis::Category.Content.CategoryContent");
