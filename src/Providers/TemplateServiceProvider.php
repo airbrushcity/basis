@@ -38,14 +38,9 @@ class TemplateServiceProvider extends ServiceProvider
     public function boot(Twig $twig, Dispatcher $eventDispatcher, ConfigRepository $config)
     {
         // Register Twig String Loader to use function: template_from_string
-        $twig->addExtension('Twig_Extension_StringLoader'		    
-        $MobileTest = new Twig_SimpleTest('mobile', function () {	
-        if (true===mobile_test()) {
-             return true;
-        }
-             return false;
-        });
-        $twig->addTest($MobileTest);	    
+        $twig->addExtension('Twig_Extension_StringLoader');
+	$mobile = new Twig_SimpleFilter(mobile_test());
+        $twig->addTest($mobile);	
 					
         // provide template to use for content categories
         $eventDispatcher->listen('tpl.category.content', function(TemplateContainer $container, $templateData) {
