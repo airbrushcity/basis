@@ -22,11 +22,16 @@ class TemplateServiceProvider extends ServiceProvider
 
     }
 
+    public function mobile_path()
+    {   
+        patch('/', '/amp/');
+    }
+	
     public function mobile_test()
     {   
 	if (true===getIsMobile()) 
 	{
-            patch('/', '/amp/');
+	    mobile_path();
 	    return true;
 	}
 	else 
@@ -39,8 +44,11 @@ class TemplateServiceProvider extends ServiceProvider
     {
         // Register Twig String Loader to use function: template_from_string
         $twig->addExtension('Twig_Extension_StringLoader');
-	$mobile = new Twig_SimpleFilter(mobile_test());
-        $twig->addTest($mobile);	
+
+	    
+	$mobile = new Twig_SimpleFunction(mobile_test());
+
+        $twig->addFunction($mobile);
 					
         // provide template to use for content categories
         $eventDispatcher->listen('tpl.category.content', function(TemplateContainer $container, $templateData) {
