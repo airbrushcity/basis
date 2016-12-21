@@ -1,8 +1,4 @@
-{% if not config("PluginBasis.log.performance.level") == 'development' %}{% spaceless %}{% if mobile == 'true' %}{% include "PluginBasis::PageDesign.Mobile" %}{% else %}{% include "PluginBasis::PageDesign.Desktop" %}{% endif %}{% endspaceless %}
-{% else %}
-{% if mobile == 'true' %}
-{% include "PluginBasis::PageDesign.Mobile" %}
+{% if not config("PluginBasis.log.performance.level") == 'development' %}{% spaceless %}{% include "PluginBasis::PageDesign.Desktop" %}{% endspaceless %}
 {% else %}
 {% include "PluginBasis::PageDesign.Desktop" %}
-{% endif %}
 {% endif %}
