@@ -9,6 +9,7 @@ use Plenty\Plugin\ConfigRepository;
 
 use Plenty\Modules\Category\Models\Category;
 use Plenty\Modules\Item\DataLayer\Models\Record;
+use Plenty\Modules\Frontend\Services;
 
 use IO\Helper\TemplateContainer;
 use IO\Helper\CategoryMap;
@@ -18,18 +19,30 @@ class TemplateServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        
+
     }
-    
-	public function mobileCheck()
-	{
-		return false;
-	}
+
+    public function mobile_path()
+    {
+        patch('/', '/amp/');
+    }
+
+    if (true===getIsMobile())
+    {
+        mobile_path();
+        $ThemeMobile = true;
+    }
+    else
+    {
+        $ThemeMobile = false;
+    }
 		
     public function boot(Twig $twig, Dispatcher $eventDispatcher, ConfigRepository $config)
     {
         // Register Twig String Loader to use function: template_from_string
         $twig->addExtension('Twig_Extension_StringLoader');
+
+        $twig->addGlobal('mobile', $ThemeMobile);
 			
         // provide template to use for content categories
         $eventDispatcher->listen('tpl.category.content', function(TemplateContainer $container, $templateData) {
