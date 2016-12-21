@@ -1,5 +1,5 @@
 {
-    "name"              : "PluginBase",
+    "name"              : "PluginBasis",
     "description"       : "Airbrush City Core Layout",
     "author"            : "Airbrush City GmbH",
     "keywords"          : ["airbrush-city", "plugins", "layout", "template", "basis"],
