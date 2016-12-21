@@ -1,0 +1,104 @@
+{
+    "name"              : "PluginBase",
+    "description"       : "Airbrush City Core Layout",
+    "author"            : "Airbrush City GmbH",
+    "keywords"          : ["airbrush-city", "plugins", "layout", "template", "basis"],
+    "type"              : "template",
+    "require"           : [],
+    "namespace"         : "Basis",
+    "serviceProvider"   : "Basis\\Providers\\TemplateServiceProvider",
+	"javaScriptFiles"   : [],
+    "runOnBuild"        :
+    [
+      "Basis\\Migrations\\CategoriesMigration"
+    ],
+    "containers"        :
+    [
+        {
+            "key"           : "Checkout",
+            "name"          : "Checkout: Override checkout",
+            "description"   : "Override the complete checkout page.",
+            "multiple"      : false
+        },
+        {
+            "key"           : "Checkout.AddressLists",
+            "name"          : "Checkout: Override address controls",
+            "description"   : "Override the invoice and delivery address controls in the checkout.",
+            "multiple"      : false
+        },
+        {
+            "key"           : "Checkout.BillingAddress",
+            "name"          : "Checkout: Override invoice address control",
+            "description"   : "Override the invoice address control in the checkout.",
+            "multiple"      : false
+        },
+        {
+            "key"           : "Checkout.BeforeBillingAddress",
+            "name"          : "Checkout: Before invoice address",
+            "description"   : "Add content before the invoice address control in the checkout."
+        },
+        {
+            "key"           : "Checkout.AfterBillingAddress",
+            "name"          : "Checkout: After invoice address",
+            "description"   : "Add content after the invoice address control in the checkout."
+        },
+        {
+            "key"           : "Checkout.ShippingAddress",
+            "name"          : "Checkout: Override shipping address control",
+            "description"   : "Override the shipping address control in the checkout.",
+            "multiple"      : false
+        },
+        {
+            "key"           : "Checkout.BeforeShippingAddress",
+            "name"          : "Checkout: Before shipping address",
+            "description"   : "Add content before the shipping address control in the checkout."
+        },
+        {
+            "key"           : "Checkout.AfterShippingAddress",
+            "name"          : "Checkout: After shipping address",
+            "description"   : "Add content after the shipping address control in the checkout."
+        },
+        {
+            "key"           : "Checkout.ShippingProfileList",
+            "name"          : "Checkout: Override shipping method",
+            "description"   : "Override the list of shipping methods in the checkout."
+        },
+        {
+            "key"           : "Checkout.BeforeShippingProfileList",
+            "name"          : "Checkout: Before shipping method",
+            "description"   : "Add content before the list of shipping methods in the checkout."
+        },
+        {
+            "key"           : "Checkout.AfterShippingProfileList",
+            "name"          : "Checkout: After shipping method",
+            "description"   : "Add content after the list of shipping methods in the checkout."
+        },
+        {
+            "key"           : "Checkout.PaymentList",
+            "name"          : "Checkout: Override payment method",
+            "description"   : "Override the list of payment methods in the checkout."
+        },
+        {
+            "key"           : "Checkout.BeforePaymentList",
+            "name"          : "Checkout: Before payment method",
+            "description"   : "Add content before the list of payment methods in the checkout."
+        },
+        {
+            "key"           : "Checkout.AfterPaymentList",
+            "name"          : "Checkout: After payment method",
+            "description"   : "Add content after the list of payment methods in the checkout."
+        },
+        {
+            "key"           : "Checkout.OptIns",
+            "name"          : "Checkout: Opt-ins",
+            "description"   : "Add content to opt-in checkboxes in the checkout."
+        },
+        {
+            "key"           : "OrderConfirmation.AdditionalPaymentInformation",
+            "name"          : "Order confirmation: Additional payment information",
+            "description"   : "Add additional payment information on the order confirmation page.",
+            "multiple"      : false
+        }
+    ],
+    "dataProviders"     : []
+}

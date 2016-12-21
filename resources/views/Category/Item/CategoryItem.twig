@@ -1,0 +1,70 @@
+{% if config("PluginBasis.log.performance.level") == 'development' %}{%  else %}{% spaceless %}{% endif %}
+{% import "PluginBasis::PageDesign.Macros.IncludeComponents" as Loader %}
+{% if ($mobileCheck == true) %}
+<!doctype html >
+<html ⚡>
+<head>
+<meta charset="utf-8">
+{% include "PluginBasis::PageDesign.Global.AmpJs-1" %}
+{% include "PluginBasis::PageDesign.Site.AmpJs-2" %}
+<link rel="canonical" href="{{ canonicalLink }}">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+{% include "PluginBasis::PageDesign.Global.AmpCssGlobal" %}
+{% include "PluginBasis::PageDesign.Site.AmpJs-3" %}
+{% block AmpJs-3 %}{% endblock %}
+<title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+<meta name="description" content="{% if page.metaDescription %}{{ page.metaDescription | escape }}{% else %}{{ site.metaDescription | escape }}{% endif %}" />
+{% block AmpSeo %}{% endblock %}
+{% block AmpCssSite %}{% endblock %}
+</head>	
+{% endif %}
+<body class="page">
+{% include "PluginBasis::PageDesign.Global.MobileHeader" %}
+{% include "PluginBasis::PageDesign.Global.MobileNav" %}
+<main class="content">
+${ trace.message }
+{% block PageBody %}{% endblock %}
+</main>
+{% include "PluginBasis::PageDesign.Global.MobileFooter" %}
+{{ Loader.include_components() }}
+{% include "PluginBasis::PageDesign.Site.AmpJs-4" %}
+{% block AmpJs-4 %}{% endblock %}
+</body>
+</html>
+
+{% else %}
+<!doctype html>
+<html class="site">
+<head>
+<meta charset="utf-8">
+{% include "PluginBasis::PageDesign.Global.Js-1" %}
+{% include "PluginBasis::PageDesign.Site.Js-2" %}
+<link rel="canonical" href="{{ canonicalLink }}">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+{% include "PluginBasis::PageDesign.Site.CssGlobal" %}
+{% block CssGlobal %}{% endblock %}
+{% include "PluginBasis::PageDesign.Site.Js-3" %}
+{% block Js-2 %}{% endblock %}
+<title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+<meta name="description" content="{% if page.metaDescription %}{{ page.metaDescription | escape }}{% else %}{{ site.metaDescription | escape }}{% endif %}" />
+<meta name="keywords" content="{% if page.metaKeywords %}{{ page.metaKeywords | escape }}{% else %}{{ site.metaKeywords | escape }}{% endif %}" />
+{% block Seo %}{% endblock %}
+{% block CssSite %}{% endblock %}
+</head>	
+{% endif %}
+<body class="page">
+<main class="content">
+${ trace.message }
+{% block PageBody %}{% endblock %}
+</main>
+{% include "PluginBasis::PageDesign.Global.Nav" %}
+{% include "PluginBasis::PageDesign.Global.Aside" %}
+{% include "PluginBasis::PageDesign.Global.Top" %}
+{% include "PluginBasis::PageDesign.Global.Footer" %}
+{{ Loader.include_components() }}
+{% include "PluginBasis::PageDesign.Site.Js-4" %}
+{% block JS-4 %}{% endblock %}
+</body>
+</html>
+{% endif %}
+{% if config("PluginBasis.log.performance.level") == 'development' %}{%  else %}{% endspaceless %}{% endif %}

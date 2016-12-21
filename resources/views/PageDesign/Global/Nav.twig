@@ -1,0 +1,16 @@
+<ul class="nav-list">
+{% for category in services.category.getNavigationTree("item") %}
+{% if category.children is empty %}
+    <li class="nav-item">
+        <a class="nav-link" href="{{ services.category.getURL( category, lang ) }}">{{ category.details.first.name }}</a>
+    </li>
+{% else %}
+    <li class="nav-item">
+        <a class="nav-link" id="{{ category.details.first.name }}_Menu" data-target="#"href="{{ services.category.getURL( category ) }}">{{ category.details.first.name }}</a>
+            {% for subcat in category.children %}
+			<a class="special-case" href="{{ services.category.getURL( subcat, lang ) }}">{{ subcat.details.first.name }}</a>
+            {% endfor %}
+    </li>
+{% endif %}
+{% endfor %}
+</ul>

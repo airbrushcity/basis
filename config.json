@@ -1,0 +1,40 @@
+ [ 
+	{
+        "tab"       : "Categories",
+        "key"       : "global.category.page_not_found",
+        "label"     : "Page not found",
+        "type"      : "category_select"
+    },
+    {
+        "tab"       : "Categories",
+        "key"       : "global.category.item_not_found",
+        "label"     : "Item not found",
+        "type"      : "category_select"
+	},
+	{
+        "tab"               : "Registration",
+        "key"               : "register.email_regex",
+        "label"             : "The RegEx used for the email",
+        "type"              : "text",
+        "default"           : "[a-zA-Z0-9!#$%&'*+\\/=?^_`{|}~-]+(?:\\.[a-zA-Z0-9!#$%&'*+\\/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?"
+    },
+    {
+        "tab"               : "Registration",
+        "key"               : "register.password_regex",
+        "label"             : "The RegEx used for the password",
+        "type"              : "text",
+        "default"           : "^(?!\\s*$).+"
+	},
+    {
+        "tab"               : "Logging and performance",
+        "key"               : "log.performance.level",
+        "label"             : "Performance level",
+        "type"              : "dropdown",
+        "possibleValues"    :
+        {
+            "development": "Development",
+            "live": "Live"
+        },
+        "default"           : "development"
+    }
+]

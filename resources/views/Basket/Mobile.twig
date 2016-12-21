@@ -1,0 +1,31 @@
+{% import "PluginBasis::PageDesign.Macros.IncludeComponents" as Loader %}
+<!doctype html>
+<html ⚡>
+<head>
+<meta charset="utf-8">
+{% include "PluginBasis::PageDesign.Global.AmpJs1" %}
+{% include "PluginBasis::PageDesign.Site.AmpJs2" %}
+<link rel="canonical" href="{{ canonicalLink }}">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+{% include "PluginBasis::PageDesign.Global.AmpCssGlobal" %}
+{% include "PluginBasis::PageDesign.Site.AmpJs3" %}
+{% block AmpJs3 %}{% endblock %}
+<title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+<meta name="description" content="{% if page.metaDescription %}{{ page.metaDescription | escape }}{% else %}{{ site.metaDescription | escape }}{% endif %}" />
+{% block AmpSeo %}{% endblock %}
+{% block AmpCssSite %}{% endblock %}
+</head>	
+{% endif %}
+<body class="page">
+{% include "PluginBasis::PageDesign.Global.MobileHeader" %}
+{% include "PluginBasis::PageDesign.Global.MobileNav" %}
+<main class="content">
+${ trace.message }
+{% block PageBody %}{% endblock %}
+</main>
+{% include "PluginBasis::PageDesign.Global.MobileFooter" %}
+{{ Loader.include_components() }}
+{% include "PluginBasis::PageDesign.Site.AmpJs4" %}
+{% block AmpJs-4 %}{% endblock %}
+</body>
+</html>

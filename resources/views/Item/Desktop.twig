@@ -1,0 +1,33 @@
+{% import "PluginBasis::PageDesign.Macros.IncludeComponents" as Loader %}
+<!doctype html>
+<html class="site">
+<head>
+<meta charset="utf-8">
+{% include "PluginBasis::PageDesign.Global.Js1" %}
+{% include "PluginBasis::PageDesign.Site.Js2" %}
+<link rel="canonical" href="{{ canonicalLink }}">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+{% include "PluginBasis::PageDesign.Site.CssGlobal" %}
+{% block CssGlobal %}{% endblock %}
+{% include "PluginBasis::PageDesign.Site.Js3" %}
+{% block Js2 %}{% endblock %}
+<title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+<meta name="description" content="{% if page.metaDescription %}{{ page.metaDescription | escape }}{% else %}{{ site.metaDescription | escape }}{% endif %}" />
+<meta name="keywords" content="{% if page.metaKeywords %}{{ page.metaKeywords | escape }}{% else %}{{ site.metaKeywords | escape }}{% endif %}" />
+{% block Seo %}{% endblock %}
+{% block CssSite %}{% endblock %}
+</head>
+<body class="page">
+<main class="content">
+${ trace.message }
+{% block PageBody %}{% endblock %}
+</main>
+{% include "PluginBasis::PageDesign.Global.Nav" %}
+{% include "PluginBasis::PageDesign.Global.Aside" %}
+{% include "PluginBasis::PageDesign.Global.Top" %}
+{% include "PluginBasis::PageDesign.Global.Footer" %}
+{{ Loader.include_components() }}
+{% include "PluginBasis::PageDesign.Site.Js4" %}
+{% block JS4 %}{% endblock %}
+</body>
+</html>
