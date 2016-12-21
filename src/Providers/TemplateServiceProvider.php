@@ -6,6 +6,8 @@ use Plenty\Plugin\ServiceProvider;
 use Plenty\Plugin\Templates\Twig;
 use Plenty\Plugin\Events\Dispatcher;
 use Plenty\Plugin\ConfigRepository;
+use Plenty\Plugin\RouteServiceProvider;
+use Plenty\Plugin\Routing\Router;
 
 use Plenty\Modules\Category\Models\Category;
 use Plenty\Modules\Item\DataLayer\Models\Record;
