@@ -22,20 +22,25 @@ class TemplateServiceProvider extends ServiceProvider
 
     }
 
-    public function mobile_path()
-    {
-        patch('/', '/amp/');
+    public function mobile_test()
+    {   
+	if (true===getIsMobile()) 
+	{
+            patch('/', '/amp/');
+	    return true;
+	}
+	else 
+	{
+	    return false;	
+	}	
     }
 	
-		
     public function boot(Twig $twig, Dispatcher $eventDispatcher, ConfigRepository $config)
     {
         // Register Twig String Loader to use function: template_from_string
         $twig->addExtension('Twig_Extension_StringLoader'		    
-	$twig = new Twig_Environment($loader);
-        $MobileTest = new Twig_SimpleTest(function () {	
-        if (true===getIsMobile()) {
-	     mobile_path();
+        $MobileTest = new Twig_SimpleTest('mobile', function () {	
+        if (true===mobile_test()) {
              return true;
         }
              return false;
