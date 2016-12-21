@@ -26,14 +26,10 @@ class TemplateServiceProvider extends ServiceProvider
     {
         patch('/', '/amp/');
     }
-
-		
-    public function boot(Twig $twig, Dispatcher $eventDispatcher, ConfigRepository $config)
+    
+    public function mobile_switch()
     {
-        // Register Twig String Loader to use function: template_from_string
-        $twig->addExtension('Twig_Extension_StringLoader');
-
-        if (true===getIsMobile())
+    	if (true===getIsMobile())
         {
             mobile_path();
             $ThemeMobile = true;
@@ -42,7 +38,15 @@ class TemplateServiceProvider extends ServiceProvider
         {
             $ThemeMobile = false;
         }
-
+    }
+   
+   mobile_switch();
+		
+    public function boot(Twig $twig, Dispatcher $eventDispatcher, ConfigRepository $config)
+    {
+        // Register Twig String Loader to use function: template_from_string
+        $twig->addExtension('Twig_Extension_StringLoader');
+	    
         $twig->addGlobal('mobile', $ThemeMobile);
 			
         // provide template to use for content categories
