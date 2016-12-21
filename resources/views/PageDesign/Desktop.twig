@@ -7,7 +7,7 @@
 {% include "PluginBasis::PageDesign.Site.Js2" %}
 <link rel="canonical" href="{{ canonicalLink }}">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-{% include "PluginBasis::PageDesign.Site.CssGlobal" %}
+{% include "PluginBasis::PageDesign.Global.CssGlobal" %}
 {% block CssGlobal %}{% endblock %}
 {% include "PluginBasis::PageDesign.Site.Js3" %}
 {% block Js2 %}{% endblock %}
@@ -15,6 +15,7 @@
 <meta name="description" content="{% if page.metaDescription %}{{ page.metaDescription | escape }}{% else %}{{ site.metaDescription | escape }}{% endif %}" />
 <meta name="keywords" content="{% if page.metaKeywords %}{{ page.metaKeywords | escape }}{% else %}{{ site.metaKeywords | escape }}{% endif %}" />
 {% block Seo %}{% endblock %}
+{% include "PluginBasis::PageDesign.Site.CssSite" %}
 {% block CssSite %}{% endblock %}
 </head>
 <body class="page">
