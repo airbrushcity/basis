@@ -1,5 +1,6 @@
 {% import "PluginBasis::PageDesign.Macros.IncludeComponents" as Loader %}
 <!doctype html>
+{% set lang = services.sessionStorage.getLang() %}
 <html class="site">
 <head>
 <meta charset="utf-8">
