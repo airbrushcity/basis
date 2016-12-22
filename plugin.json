@@ -4,7 +4,7 @@
     "author"            : "Airbrush City GmbH",
     "keywords"          : ["airbrush-city", "plugins", "layout", "template", "basis"],
     "type"              : "template",
-    "require"           : [],
+    "require"           : [PluginIO],
     "namespace"         : "Basis",
     "serviceProvider"   : "Basis\\Providers\\TemplateServiceProvider",
 	"javaScriptFiles"   : [],
